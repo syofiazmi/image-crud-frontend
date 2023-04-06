@@ -28,7 +28,7 @@ const ProductList = () => {
       <Link to="/add" className="button is-success">
         Add New
       </Link>
-      <div className="columns is-multiline">
+      <div className="columns is-multiline mt-5">
         {products.map((product) => (
           <div className="column is-one-quarter" key={product.id}>
             <div class="card">
