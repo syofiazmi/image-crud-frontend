@@ -2,22 +2,22 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-const ProductList = () => {
-  const [products, setProducts] = useState([]);
+const ImageList = () => {
+  const [images, setImages] = useState([]);
 
   useEffect(() => {
-    getProduct();
+    getImage();
   }, []);
 
-  const getProduct = async () => {
-    const response = await axios.get("http://localhost:5000/products");
-    setProducts(response.data);
+  const getImage = async () => {
+    const response = await axios.get("http://localhost:5000/images");
+    setImages(response.data);
   };
 
-  const deleteProduct = async (productId) => {
+  const deleteImage = async (imageId) => {
     try {
-      await axios.delete(`http://localhost:5000/products/${productId}`);
-      getProduct();
+      await axios.delete(`http://localhost:5000/images/${imageId}`);
+      getImage();
     } catch (error) {
       console.log(error);
     }
@@ -29,28 +29,28 @@ const ProductList = () => {
         Add New
       </Link>
       <div className="columns is-multiline mt-5">
-        {products.map((product) => (
-          <div className="column is-one-quarter" key={product.id}>
+        {images.map((image) => (
+          <div className="column is-one-quarter" key={image.id}>
             <div class="card">
               <div class="card-image">
                 <figure class="image is-4by3">
-                  <img src={product.url} alt="image" />
+                  <img src={image.url} alt="image" />
                 </figure>
               </div>
               <div class="card-content">
                 <div class="media">
                   <div class="media-content">
-                    <p class="title is-4">{product.name}</p>
+                    <p class="title is-4">{image.name}</p>
                   </div>
                 </div>
               </div>
 
               <footer className="card-footer">
-                <Link to={`edit/${product.id}`} className="card-footer-item">
+                <Link to={`edit/${image.id}`} className="card-footer-item">
                   Edit
                 </Link>
                 <a
-                  onClick={() => deleteProduct(product.id)}
+                  onClick={() => deleteImage(image.id)}
                   className="card-footer-item"
                 >
                   Delete
@@ -64,4 +64,4 @@ const ProductList = () => {
   );
 };
 
-export default ProductList;
+export default ImageList;

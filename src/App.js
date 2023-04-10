@@ -1,15 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import ProductList from './components/ProductList';
-import { AddProduct } from './components/AddProduct';
-import { EditProduct } from './components/EditProduct';
+import ImageList from './components/ImageList';
+import { AddImage } from './components/AddImage';
+import { EditImage } from './components/EditImage';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<ProductList />} />
-        <Route path="add" element={<AddProduct />} />
-        <Route path="edit/:id" element={<EditProduct />} />
+        <Route path="/" element={<ImageList />} />
+        <Route path="add" element={<AddImage />} />
+        <Route path="edit/:id" element={<EditImage />} />
       </Routes>
     </BrowserRouter>
   );
